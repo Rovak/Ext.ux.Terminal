@@ -1,4 +1,3 @@
-
 /**
  * Command fired by Terminal
  */
@@ -6,23 +5,37 @@ Ext.define('Ext.ux.terminal.Command', {
 
     terminal: null,
 
+    /**
+     * Set the terminal which fired the command
+     *
+     * @param {Ext.ux.Terminal} terminal
+     */
     setTerminal: function(terminal)
     {
         this.terminal = terminal;
     },
 
+    /**
+     * @return {Ext.ux.Terminal} terminal which fired this command
+     */
     getTerminal: function()
     {
         return this.terminal;
     },
 
+    /**
+     * Full command text
+     *
+     * @param {String} value
+     */
     setCommand: function(value)
     {
         this.value = value;
     },
 
     /**
-     * Retrieve the command as text
+     * Retrieve a command as text when no index is given it will
+     * return the full command
      *
      * @param {Strin} index
      * @return {String}

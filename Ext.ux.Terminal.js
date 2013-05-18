@@ -14,6 +14,10 @@ Ext.define('Ext.ux.Terminal', {
         'padding' : '5px'
     },
 
+    requires: [
+        'Ext.ux.terminal.Command'
+    ],
+
     /**
      * Input element
      *
