@@ -11,7 +11,8 @@ Ext.define('Ext.ux.Terminal', {
         'background-color': '#000;',
         'color': '#FFF',
         'font-family' : 'Courier New',
-        'padding' : '5px'
+        'padding' : '5px',
+        'overflow-y': 'scroll'
     },
 
     requires: [
@@ -119,6 +120,10 @@ Ext.define('Ext.ux.Terminal', {
                 cmd.handle();
                 cmd.getTerminal().writeLine((new Date()).toLocaleString());
                 break;
+            case "cls":
+                cmd.handle();
+                cmd.getTerminal().clearScreen();
+                break;
         }
     },
 
@@ -141,6 +146,7 @@ Ext.define('Ext.ux.Terminal', {
     {
         this.consoleElement = this.consoleElement.setHTML(this.consoleElement.getHTML() + text);
         this.fireEvent('write', this, text);
+        this.body.dom.scrollTop = this.body.dom.scrollHeight;
     },
 
     /**
@@ -161,6 +167,14 @@ Ext.define('Ext.ux.Terminal', {
     getConsoleLines: function()
     {
         return this.consoleElement.getHTML().split('<br>');
+    },
+
+    /**
+     * Clear the HTML screen
+     */
+    clearScreen: function()
+    {
+        this.consoleElement.setHTML('');
     },
 
     /**
